@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th bgcolor="#deb887">方法</th>
+        <th>返回类型</th>
+        <th>作用</th>
+    </tr>
+    <tr>
+        <td>toList</td>
+        <td>List<T></td>
+        <td>把流中元素收集到List</td>
+    </tr>
+    <tr>
+        <td colspan="3">List<Employee>emps=list.stream().collect(Collectors.toList());</td>
+    </tr>
+    <tr>
+        <td>toSet</td>
+        <td>Set<T></td>
+        <td>把流中元素收集到Set</td>
+    </tr>
+    <tr>
+        <td colspan="3">Set<Employee>emps=list.stream().collect(Collectors.toSet());</td>
+    </tr>
+    <tr>
+        <td>toCollection</td>
+        <td>Collection<T></td>
+        <td>把流中元素收集到创建的集合</td>
+    </tr>
+    <tr>
+        <td colspan="3">Collection<Employee>emps=list.stream().collect(Collectors.toCollection(ArrayList::new));</td>
+    </tr>
+    <tr>
+        <td>counting</td>
+        <td>Long</td>
+        <td>计算流中元素的个数</td>
+    </tr>
+    <tr>
+        <td colspan="3">longcount=list.stream().collect(Collectors.counting());</td>
+    </tr>
+    <tr>
+        <td>summingInt</td>
+        <td>Integer</td>
+        <td>对流中元素的整数属性求和</td>
+    </tr>
+    <tr>
+        <td colspan="3">inttotal=list.stream().collect(Collectors.summingInt(Employee::getSalary));</td>
+    </tr>
+    <tr>
+        <td>averagingInt</td>
+        <td>Double</td>
+        <td>计算流中元素Integer属性的平均值</td>
+    </tr>
+    <tr>
+        <td colspan="3">doubleavg=list.stream().collect(Collectors.averagingInt(Employee::getSalary));</td>
+    </tr>
+    <tr>
+        <td>summarizingInt</td>
+        <td>IntSummaryStatistics</td>
+        <td>收集流中Integer属性的统计值。如：平均值</td>
+    </tr>
+    <tr>
+        <td colspan="3">IntSummaryStatisticsiss=list.stream().collect(Collectors.summarizingInt(Employee::getSalary));</td>
+    </tr>
+    <tr>
+        <td>joining</td>
+        <td>String</td>
+        <td>连接流中每个字符串</td>
+    </tr>
+    <tr>
+        <td colspan="3">Stringstr=list.stream().map(Employee::getName).collect(Collectors.joining());</td>
+    </tr>
+    <tr>
+        <td>maxBy</td>
+        <td>Optional<T></td>
+        <td>根据比较器选择最大值</td>
+    </tr>
+    <tr>
+        <td colspan="3">Optional<Emp>max=list.stream().collect(Collectors.maxBy(comparingInt(Employee::getSalary)));</td>
+    </tr>
+    <tr>
+        <td>maxBy</td>
+        <td>Optional<T></td>
+        <td>根据比较器选择最大值</td>
+    </tr>
+    <tr>
+        <td colspan="3">Optional<Emp>max=list.stream().collect(Collectors.maxBy(comparingInt(Employee::getSalary)));</td>
+    </tr>
+    <tr>
+        <td>minBy</td>
+        <td>Optional<T></td>
+        <td>根据比较器选择最小值</td>
+    </tr>
+    <tr>
+        <td colspan="3"Optional<Emp>min=list.stream().collect(Collectors.minBy(comparingInt(Employee::getSalary)));</td>
+    </tr>
+    <tr>
+        <td>reducing</td>
+        <td>归约产生的类型</td>
+        <td>从一个作为累加器的初始值开始，利用BinaryOperator与流中元素逐个结合，从而归约成单个值</td>
+    </tr>
+    <tr>
+        <td colspan="3">inttotal=list.stream().collect(Collectors.reducing(0,Employee::getSalar,Integer::sum));</td>
+    </tr>
+    <tr>
+        <td>collectingAndThen</td>
+        <td>转换函数返回的类型<T></td>
+        <td>包裹另一个收集器，对其结果转换函数</td>
+    </tr>
+    <tr>
+        <td colspan="3">inthow=list.stream().collect(Collectors.collectingAndThen(Collectors.toList(),List::size));</td>
+    </tr>
+    <tr>
+        <td>groupingBy</td>
+        <td>Map<K,List<T>></td>
+        <td>根据某属性值对流分组，属性为K，结果为V</td>
+    </tr>
+    <tr>
+        <td colspan="3">Map<Emp.Status, List<Emp>> map= list.stream().collect(Collectors.groupingBy(Employee::getStatus));</td>
+    </tr>
+    <tr>
+        <td>partitioningBy</td>
+        <td>Map<Boolean,List<T>></td>
+        <td>根据true或false进行分区</td>
+    </tr>
+    <tr>
+        <td colspan="3">Map<Boolean,List<Emp>>vd=list.stream().collect(Collectors.partitioningBy(Employee::getManage));</td>
+    </tr>
+</table>
+</body>
+</html>
